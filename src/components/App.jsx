@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoList from "./TodoList";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -56,36 +57,11 @@ function App() {
           </button>
         </div>
       </form>
-      <ul className="list-group">
-        {todos.map((todo) => (
-          <li key={todo.id} className="list-group-item mb-2">
-            <div className="form-check form-switch form-check-inline">
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => toggleTodoCompleate(todo.id)}
-                name={todo.id}
-                id={todo.id}
-                className="form-check-input"
-              ></input>
-              <span>{todo.title}</span>
-              <label
-                className="form-check-label visually-hidden"
-                htmlFor={todo.id}
-              >
-                Did this done
-              </label>
-            </div>
-
-            <button
-              onClick={() => removeTodo(todo.id)}
-              className="btn-outline-danger ms-3"
-            >
-              &times;
-            </button>
-          </li>
-        ))}
-      </ul>
+      <TodoList
+        todos={todos}
+        toggleTodoCompleate={toggleTodoCompleate}
+        removeTodo={removeTodo}
+      />
     </div>
   );
 }
