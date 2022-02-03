@@ -29,7 +29,7 @@ function App() {
         }}
         className="row mt-2 mb-2"
       >
-        <div class="col-8">
+        <div className="col-8">
           <label htmlFor="textInput" className="visually-hidden">
             Todo text
           </label>
@@ -41,7 +41,7 @@ function App() {
             className="form-control "
           />
         </div>
-        <div class="col-auto">
+        <div className="col-auto">
           <button onClick={addTodo} className="btn btn-primary">
             Add
           </button>
