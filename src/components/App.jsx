@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import InputField from "./InputField";
 import TodoList from "./TodoList";
 
 function App() {
@@ -33,30 +34,7 @@ function App() {
   }
   return (
     <div className="App">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-        className="row mt-2 mb-2"
-      >
-        <div className="col-8">
-          <label htmlFor="textInput" className="visually-hidden">
-            Todo text
-          </label>
-          <input
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            type="text"
-            id="textInput"
-            className="form-control "
-          />
-        </div>
-        <div className="col-auto">
-          <button onClick={addTodo} className="btn btn-primary">
-            Add
-          </button>
-        </div>
-      </form>
+      <InputField text={text} handleInput={setText} handleSubmit={addTodo} />
       <TodoList
         todos={todos}
         toggleTodoCompleate={toggleTodoCompleate}
