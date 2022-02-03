@@ -1,6 +1,6 @@
 function TodoItem({ id, title, completed, toggleTodoCompleate, removeTodo }) {
   return (
-    <li key={id} className="list-group-item mb-2">
+    <li key={id} className="list-group-item">
       <div className="form-check form-switch form-check-inline">
         <input
           type="checkbox"
@@ -16,10 +16,7 @@ function TodoItem({ id, title, completed, toggleTodoCompleate, removeTodo }) {
         </label>
       </div>
 
-      <button
-        onClick={() => removeTodo(id)}
-        className="btn-outline-danger ms-3"
-      >
+      <button onClick={() => removeTodo(id)} className="btn btn-light ">
         &times;
       </button>
     </li>
