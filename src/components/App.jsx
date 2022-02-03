@@ -14,12 +14,13 @@ function App() {
           completed: false,
         },
       ]);
-      console.log(todos);
-
       setText("");
     }
   }
 
+  function removeTodo(todoId) {
+    setTodos(todos.filter((todo) => todo.id != todoId));
+  }
   return (
     <div className="App">
       <form
@@ -33,7 +34,6 @@ function App() {
           onChange={(e) => setText(e.target.value)}
           type="text"
           id="textInput"
-          required
         />
         <button onClick={addTodo}>Add Todo</button>
       </form>
@@ -42,7 +42,7 @@ function App() {
           <li key={todo.id}>
             <input type="checkbox" name={todo.id} id={todo.id}></input>
             <span>{todo.title}</span>
-            <button>&times;</button>
+            <button onClick={() => removeTodo(todo.id)}>&times;</button>
           </li>
         ))}
       </ul>
