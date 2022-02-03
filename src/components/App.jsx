@@ -5,7 +5,7 @@ function App() {
   const [text, setText] = useState("");
 
   function addTodo() {
-    if (text.trim() != "") {
+    if (text.trim() !== "") {
       setTodos([
         ...todos,
         {
@@ -18,8 +18,17 @@ function App() {
     }
   }
 
+  function toggleTodoCompleate(todoId) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === todoId) return { ...todo, completed: !todo.completed };
+        return todo;
+      })
+    );
+  }
+
   function removeTodo(todoId) {
-    setTodos(todos.filter((todo) => todo.id != todoId));
+    setTodos(todos.filter((todo) => todo.id !== todoId));
   }
   return (
     <div className="App">
@@ -50,9 +59,30 @@ function App() {
       <ul className="list-group">
         {todos.map((todo) => (
           <li key={todo.id} className="list-group-item mb-2">
-            <input type="checkbox" name={todo.id} id={todo.id}></input>
-            <span>{todo.title}</span>
-            <button onClick={() => removeTodo(todo.id)}>&times;</button>
+            <div className="form-check form-switch form-check-inline">
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleTodoCompleate(todo.id)}
+                name={todo.id}
+                id={todo.id}
+                className="form-check-input"
+              ></input>
+              <span>{todo.title}</span>
+              <label
+                className="form-check-label visually-hidden"
+                htmlFor={todo.id}
+              >
+                Did this done
+              </label>
+            </div>
+
+            <button
+              onClick={() => removeTodo(todo.id)}
+              className="btn-outline-danger ms-3"
+            >
+              &times;
+            </button>
           </li>
         ))}
       </ul>
