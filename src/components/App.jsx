@@ -5,7 +5,11 @@ function App() {
   const [text, setText] = useState("");
 
   function addTodo() {
-    console.log(text);
+    if (text.trim() != "") {
+      setTodos([...todos, text]);
+      console.log(todos);
+      setText("");
+    }
   }
 
   return (
@@ -21,6 +25,7 @@ function App() {
           onChange={(e) => setText(e.target.value)}
           type="text"
           id="textInput"
+          required
         />
         <button onClick={addTodo}>Add Todo</button>
       </form>
