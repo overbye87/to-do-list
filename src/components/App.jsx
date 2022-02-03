@@ -27,19 +27,29 @@ function App() {
         onSubmit={(e) => {
           e.preventDefault();
         }}
+        className="row mt-2 mb-2"
       >
-        <label htmlFor="textInput"></label>
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          type="text"
-          id="textInput"
-        />
-        <button onClick={addTodo}>Add Todo</button>
+        <div class="col-8">
+          <label htmlFor="textInput" className="visually-hidden">
+            Todo text
+          </label>
+          <input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            type="text"
+            id="textInput"
+            className="form-control "
+          />
+        </div>
+        <div class="col-auto">
+          <button onClick={addTodo} className="btn btn-primary">
+            Add
+          </button>
+        </div>
       </form>
-      <ul>
+      <ul className="list-group">
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className="list-group-item mb-2">
             <input type="checkbox" name={todo.id} id={todo.id}></input>
             <span>{todo.title}</span>
             <button onClick={() => removeTodo(todo.id)}>&times;</button>
