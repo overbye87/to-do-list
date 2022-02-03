@@ -6,8 +6,16 @@ function App() {
 
   function addTodo() {
     if (text.trim() != "") {
-      setTodos([...todos, text]);
+      setTodos([
+        ...todos,
+        {
+          id: new Date().toISOString(),
+          title: text,
+          completed: false,
+        },
+      ]);
       console.log(todos);
+
       setText("");
     }
   }
@@ -29,6 +37,15 @@ function App() {
         />
         <button onClick={addTodo}>Add Todo</button>
       </form>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <input type="checkbox" name={todo.id} id={todo.id}></input>
+            <span>{todo.title}</span>
+            <button>&times;</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
