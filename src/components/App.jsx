@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import InputField from "./InputField";
 import TodoList from "./TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
+
+  //const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -15,31 +19,36 @@ function App() {
 
   function addTodo() {
     if (text.trim()) {
-      setTodos([
-        ...todos,
-        {
-          id: new Date().toISOString(),
-          title: text,
-          completed: false,
-        },
-      ]);
+      dispatch({ type: "ADD_TODO", payload: { title: text } });
+      // setTodos([
+      //   ...todos,
+      //   {
+      //     id: new Date().toISOString(),
+      //     title: text,
+      //     completed: false,
+      //   },
+      // ]);
+
       setText("");
     }
   }
 
   function toggleTodoCompleate(todoId) {
-    const todosUpdatedByCompleted = todos.map((todo) => {
-      if (todo.id !== todoId) return todo; //(<--- от обратного)
-      return {
-        ...todo,
-        completed: !todo.completed,
-      };
-    });
-    setTodos(todosUpdatedByCompleted);
+    //const todosUpdatedByCompleted = todos.map((todo) => {
+    //  if (todo.id !== todoId) return todo; //(<--- от обратного)
+    //  return {
+    //    ...todo,
+    //    completed: !todo.completed,
+    //  };
+    //});
+    //setTodos(todosUpdatedByCompleted);
+    dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } });
   }
 
   function removeTodo(todoId) {
-    setTodos(todos.filter((todo) => todo.id !== todoId));
+    //setTodos(todos.filter((todo) => todo.id !== todoId));
+
+    dispatch({ type: "REMOVE_TODO", payload: { id: todoId } });
   }
 
   const numberOfCompleted = todos.filter((todo) => todo.completed).length;
