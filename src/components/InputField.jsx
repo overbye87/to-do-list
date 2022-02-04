@@ -2,6 +2,7 @@ function InputField({ text, handleInput, handleSubmit }) {
   return (
     <form
       onSubmit={(e) => {
+        handleSubmit();
         e.preventDefault();
       }}
       className="mt-3 mb-3"
@@ -17,7 +18,7 @@ function InputField({ text, handleInput, handleSubmit }) {
         className="form-control mb-2"
       />
 
-      <button type="submit" onClick={handleSubmit} className="btn btn-primary">
+      <button type="submit" className="btn btn-primary">
         Add
       </button>
     </form>

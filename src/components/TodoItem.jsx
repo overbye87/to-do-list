@@ -1,6 +1,6 @@
 function TodoItem({ id, title, completed, toggleTodoCompleate, removeTodo }) {
   return (
-    <li key={id} className="list-group-item">
+    <li className="list-group-item">
       <div className="form-check form-switch form-check-inline">
         <input
           type="checkbox"

@@ -5,7 +5,9 @@ function TodoList({ todos, toggleTodoCompleate, removeTodo }) {
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          {...todo}
+          id={todo.id}
+          title={todo.title}
+          completed={todo.completed}
           toggleTodoCompleate={toggleTodoCompleate}
           removeTodo={removeTodo}
         />
