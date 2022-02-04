@@ -25,11 +25,17 @@ function App() {
         <div className="col">
           <div className="App">
             <h1 className="mt-3">To-do list</h1>
+            <hr />
             <div>
-              <p>Completed : {numberOfCompleted}</p>
-              <p>Active : {numberOfActive}</p>
+              <p>
+                <span>Active : {numberOfActive}</span>
+                {", "}
+                <span>Completed : {numberOfCompleted}</span>
+                {"."}
+              </p>
             </div>
             <div onChange={(e) => setFilter(e.target.value)}>
+              <div>Filter:</div>
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
