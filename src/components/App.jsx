@@ -63,7 +63,7 @@ function App() {
                   id="rb_completed"
                   value="completed"
                 />
-                <label className="form-check-label" htmlFor="rb_compleated">
+                <label className="form-check-label" htmlFor="rb_completed">
                   Completed
                 </label>
               </div>
