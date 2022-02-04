@@ -1,4 +1,15 @@
-function TodoItem({ id, title, completed, toggleTodoCompleate, removeTodo }) {
+import { useDispatch } from "react-redux";
+function TodoItem({ id, title, completed }) {
+  const dispatch = useDispatch();
+
+  function toggleTodoCompleate(todoId) {
+    dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } });
+  }
+
+  function removeTodo(todoId) {
+    dispatch({ type: "REMOVE_TODO", payload: { id: todoId } });
+  }
+
   return (
     <li className="list-group-item">
       <div className="form-check form-switch form-check-inline">

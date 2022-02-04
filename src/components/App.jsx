@@ -7,52 +7,18 @@ function App() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
 
-  //const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
-
-  function filterTodos(todos, filter) {
-    if (filter === "completed") return todos.filter((todo) => todo.completed);
-    if (filter === "active") return todos.filter((todo) => !todo.completed);
-    return todos;
-  }
 
   function addTodo() {
     if (text.trim()) {
       dispatch({ type: "ADD_TODO", payload: { title: text } });
-      // setTodos([
-      //   ...todos,
-      //   {
-      //     id: new Date().toISOString(),
-      //     title: text,
-      //     completed: false,
-      //   },
-      // ]);
-
       setText("");
     }
   }
-
-  function toggleTodoCompleate(todoId) {
-    //const todosUpdatedByCompleted = todos.map((todo) => {
-    //  if (todo.id !== todoId) return todo; //(<--- от обратного)
-    //  return {
-    //    ...todo,
-    //    completed: !todo.completed,
-    //  };
-    //});
-    //setTodos(todosUpdatedByCompleted);
-    dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } });
-  }
-
-  function removeTodo(todoId) {
-    //setTodos(todos.filter((todo) => todo.id !== todoId));
-
-    dispatch({ type: "REMOVE_TODO", payload: { id: todoId } });
-  }
-
   const numberOfCompleted = todos.filter((todo) => todo.completed).length;
   const numberOfActive = todos.filter((todo) => !todo.completed).length;
+
   return (
     <div className="container">
       <div className="row">
@@ -107,11 +73,7 @@ function App() {
               handleInput={setText}
               handleSubmit={addTodo}
             />
-            <TodoList
-              todos={filterTodos(todos, filter)}
-              toggleTodoCompleate={toggleTodoCompleate}
-              removeTodo={removeTodo}
-            />
+            <TodoList filter={filter} />
           </div>
         </div>
       </div>
