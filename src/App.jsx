@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import InputField from "./InputField";
-import TodoList from "./TodoList";
+import InputField from "./components/InputField";
+import TodoList from "./components/TodoList";
 
 function App() {
   const dispatch = useDispatch();

@@ -1,11 +1,8 @@
-import { createStore } from "redux";
-
 const defaultState = {
   todos: [],
 };
 
 // action = { type: "REMOVE_TODO", payload: { id:"ID", title:"text"} }
-
 function reducer(state = defaultState, action) {
   switch (action.type) {
     case "ADD_TODO":
@@ -35,6 +32,4 @@ function reducer(state = defaultState, action) {
   }
 }
 
-const store = createStore(reducer);
-
-export { store };
+export default reducer;
