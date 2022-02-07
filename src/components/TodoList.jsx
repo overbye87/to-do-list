@@ -1,21 +1,15 @@
 import { useSelector } from "react-redux";
+import { getFilteredTodos } from "../store/selectors";
 
 import TodoItem from "./TodoItem";
 function TodoList() {
-  const filter = useSelector((state) => state.filter);
+  //const filter = useSelector((state) => state.filter);
 
-  function returnFilteredTodos(todos, filter) {
-    if (filter === "completed") return todos.filter((todo) => todo.completed);
-    if (filter === "active") return todos.filter((todo) => !todo.completed);
-    return todos;
-  }
+  //const filterTodos = useSelector((state) => userSelectors.userById(state, id));
 
-  let todos = useSelector((state) => state.todos);
-
-  let filterTodos = returnFilteredTodos(todos, filter);
   return (
     <ul className="list-group">
-      {filterTodos.map((todo) => (
+      {getFilteredTodos(state).map((todo) => (
         <TodoItem
           key={todo.id}
           id={todo.id}

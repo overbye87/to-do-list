@@ -3,7 +3,6 @@ const defaultState = {
   filter: "all",
 };
 
-// action = { type: "REMOVE_TODO", payload: { id:"ID", title:"text"} }
 function reducer(state = defaultState, action) {
   console.log(action.type, action.payload);
   switch (action.type) {
