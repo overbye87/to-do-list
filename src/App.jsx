@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
+import { addTodoAction } from "./store/todos/actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,7 +13,8 @@ function App() {
 
   function addTodo() {
     if (text.trim()) {
-      dispatch({ type: "ADD_TODO", payload: { title: text } });
+      //dispatch({ type: "ADD_TODO", payload: { title: text } });
+      dispatch(addTodoAction(text));
       setText("");
     }
   }

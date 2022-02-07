@@ -1,4 +1,6 @@
 // { type: "ADD_TODO", payload: { title: text } }
+// { type: "REMOVE_TODO", payload: { id: todoId } }
+// { type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } }
 
 const addTodoAction = (title) => {
   return {
@@ -8,3 +10,23 @@ const addTodoAction = (title) => {
     },
   };
 };
+
+const removeTodoAction = (id) => {
+  return {
+    type: "REMOVE_TODO",
+    payload: {
+      id,
+    },
+  };
+};
+
+const toggleTodoCompleteAction = (id) => {
+  return {
+    type: "TOGGLE_TODO_COMPLETE",
+    payload: {
+      id,
+    },
+  };
+};
+
+export { addTodoAction, removeTodoAction, toggleTodoCompleteAction };

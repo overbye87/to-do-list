@@ -1,13 +1,19 @@
 import { useDispatch } from "react-redux";
+import {
+  removeTodoAction,
+  toggleTodoCompleteAction,
+} from "../store/todos/actions";
 function TodoItem({ id, title, completed }) {
   const dispatch = useDispatch();
 
   function toggleTodoCompleate(todoId) {
-    dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } });
+    //dispatch({ type: "TOGGLE_TODO_COMPLETE", payload: { id: todoId } });
+    dispatch(toggleTodoCompleteAction(todoId));
   }
 
   function removeTodo(todoId) {
-    dispatch({ type: "REMOVE_TODO", payload: { id: todoId } });
+    //dispatch({ type: "REMOVE_TODO", payload: { id: todoId } });
+    dispatch(removeTodoAction(todoId));
   }
 
   return (
