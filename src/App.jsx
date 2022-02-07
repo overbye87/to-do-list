@@ -12,7 +12,6 @@ function App() {
 
   function addTodo() {
     if (text.trim()) {
-      //dispatch({ type: "ADD_TODO", payload: { title: text } });
       dispatch(addTodoAction(text));
       setText("");
     }

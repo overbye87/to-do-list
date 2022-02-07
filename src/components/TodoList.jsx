@@ -3,13 +3,10 @@ import { getFilteredTodos } from "../store/selectors";
 
 import TodoItem from "./TodoItem";
 function TodoList() {
-  //const filter = useSelector((state) => state.filter);
-
-  //const filterTodos = useSelector((state) => userSelectors.userById(state, id));
-
+  const filterTodos = useSelector(getFilteredTodos);
   return (
     <ul className="list-group">
-      {getFilteredTodos(state).map((todo) => (
+      {filterTodos.map((todo) => (
         <TodoItem
           key={todo.id}
           id={todo.id}
