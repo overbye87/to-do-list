@@ -1,9 +1,11 @@
 const defaultState = {
   todos: [],
+  filter: "all",
 };
 
 // action = { type: "REMOVE_TODO", payload: { id:"ID", title:"text"} }
 function reducer(state = defaultState, action) {
+  console.log(action.type, action.payload);
   switch (action.type) {
     case "ADD_TODO":
       let addState = {};
@@ -30,6 +32,10 @@ function reducer(state = defaultState, action) {
         } else return todo;
       });
       return toggledState;
+    case "CHANGE_FILTER":
+      let changeFilterState = { ...state };
+      changeFilterState.filter = action.payload.filter;
+      return changeFilterState;
     default:
       return state;
   }

@@ -29,4 +29,18 @@ const toggleTodoCompleteAction = (id) => {
   };
 };
 
-export { addTodoAction, removeTodoAction, toggleTodoCompleteAction };
+const changeFilterAction = (filter) => {
+  return {
+    type: "CHANGE_FILTER",
+    payload: {
+      filter,
+    },
+  };
+};
+
+export {
+  addTodoAction,
+  removeTodoAction,
+  toggleTodoCompleteAction,
+  changeFilterAction,
+};

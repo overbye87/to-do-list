@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 
 import TodoItem from "./TodoItem";
-function TodoList({ filter }) {
+function TodoList() {
+  const filter = useSelector((state) => state.filter);
+
   function returnFilteredTodos(todos, filter) {
     if (filter === "completed") return todos.filter((todo) => todo.completed);
     if (filter === "active") return todos.filter((todo) => !todo.completed);
